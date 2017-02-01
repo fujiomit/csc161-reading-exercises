@@ -1,0 +1,92 @@
+#include <stdio.h>
+
+Citation:
+I referred to the following website to answer Q1.
+https://cboard.cprogramming.com/c-programming/129690-difference-between-float-double.html
+
+Q1;
+short is for integer. In other words, it does not take decimals such as
+3.7. The minimum size is -32768, and the maximum size is 32768.
+#include <stdio.h>
+
+int main ()
+{short x = -32769;
+  short y = -32768;
+  short z = 32768;
+  short a = 32769;
+  printf("%d, %d, %d, %d\n", x, y, z, a);
+ return 0;
+  }
+
+//the answers were 32767, -32768, -32768, -32767. This was produced with the following warning.
+warning: overflow in implicit constant conversion
+
+int is for integers. Just as short does not take decimals, int does not
+take it either. Unlike short, the minimum size is -2147483648, and the maximum
+size is 2147483648.
+
+#include <stdio.h>
+
+int main ()
+{int x = -2147483649;
+  int y = -2147483648;
+  int z = 2147483648;
+  int a = 2147483649;
+  printf("%d, %d, %d, %d\n", x, y, z, a);
+ return 0;
+  }
+
+//the answers were 2147483647, -2147483648, -2147483648, -2147483647. This was produced with the following warning.
+//warning: overflow in implicit constant conversion
+
+float is for floating point numbers, which cannot only express integers but
+also decimal numbers. The minimum size is -214783647, and the maximum
+size is 214783647.
+int main ()
+{float x = 10;
+  float y = 10.5;
+  float z = -21;
+  float a = -21.5;
+  printf("%f, %f, %f, %f\n", x, y, z, a);
+ return 0;
+  }
+
+//the answers were 10.000000, 10.500000, -21.000000, -21.500000.
+
+double is also for floating point numbers, but double the size of a float.
+int main ()
+{double x = 10;
+  double y = 10.5;
+  double z = -21;
+  double a = -21.5;
+  printf("%f, %f, %f, %f\n", x, y, z, a);
+ return 0;
+  }
+
+//the answers were 10.000000, 10.500000, -21.000000, -21.500000.
+
+Q2;
+int main()
+{float y = (2 + 5)/2;
+  printf("%f\n", y);
+  return 0;
+}
+
+It produces 3.000000 as its answer. While (2+5)/s is supposed to be 3.5, the type of output int seems to ignore .5 and to produce 3.000000.
+
+
+Q3
+int main ()
+{
+ int i = 0;
+ int j = 0;
+ int x = i++;
+ int y = ++j;
+ printf("%d\n", i);
+ printf("%d\n", j);
+ printf("%d\n", x);
+ printf("%d\n", y);
+ return 0;
+}
+
+The answer were i=1, j=1, x=0, and y=1.
