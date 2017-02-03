@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void foo(void){
+     int x = 5;
+     /* Point A */
+     foo();
+     printf("%d\n", x);
+}
+
+int main(void){
+    foo();
+    return 0;
+}
+
+The state of the computation:
+Program Counter: 4
+
+The Stack
+=========
+--- foo
+  x [5]
+--- main
+   (empty)
+
+
+The behavior of this program:
+Execution of this program starts in main with the first statement of main
+at line 9. On line 9, we execute a function call wchi causes execution of
+the program to jump to foo. Now foo is the currently active frame. On line
+2, we declare x = 5. After that, the program is at Point A outlined above.
+
+What happens when this program executes?
+It would infinitely execute the function called foo because foo takes foo
+as its expression. Therefore, this program would not produce any value. 
